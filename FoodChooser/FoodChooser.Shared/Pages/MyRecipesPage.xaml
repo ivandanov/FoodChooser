@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="FoodChooser.Pages.MyRecipesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FoodChooser.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="using:FoodChooser.Views"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <ScrollViewer>
+        <Grid x:Name="LayoutRoot">
+
+            <Grid.ChildrenTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition/>
+                </TransitionCollection>
+            </Grid.ChildrenTransitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <views:Header Grid.Row="0" TitleText = "Recipes" />
+
+            <!--TODO: Content should be placed within the following grid-->
+            <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+                <ListView ItemsSource="{Binding Recipes}"
+                      ItemTemplate="{ThemeResource RecipeTemplate}" 
+                      SelectionMode="Single"
+                      SelectionChanged="OnSelectListItem"
+                        >
+                    
+                </ListView>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>

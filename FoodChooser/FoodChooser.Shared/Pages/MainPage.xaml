@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="FoodChooser.Pages.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FoodChooser.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="using:FoodChooser.Views"
+    
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="BigButtons">
+            <Setter Property="FontSize" Value="25"/>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <ProgressBar IsIndeterminate="true"  Maximum="100" Value="30" Height="10" Width="200"/>
+        <TextBlock FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Top">Food Chooser</TextBlock>
+        <Image Source="../Images/cupcake240x240.png" HorizontalAlignment="Center" Height="240" Margin="0,100,0,0" VerticalAlignment="Top" Width="240"/>
+        <Button Content="What to eat?" HorizontalAlignment="Center" Margin="0,150,0,0"  Style="{StaticResource BigButtons}" Click="OnWhatToEatButtonClick"/>
+        <Button Content="My recipes"    HorizontalAlignment="Center" Margin="0,300,0,0" Style="{StaticResource BigButtons}" Click="OnMyRecipeButtonClick"/>
+        <Button Content="Add new recipe" HorizontalAlignment="Center" Margin="0,450,0,0" Style="{StaticResource BigButtons}" Click="OnAddNewRecipeButtonClick"/>
+    </Grid>
+</Page>

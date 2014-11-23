@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>d3765bf8-623a-46c1-a397-8638633bfcd8</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>FoodChooser</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Common\NavigationHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ObservableDictionary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\RelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\SuspensionManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ArrayBitmapConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolVisabilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataStorageHelpers\SQLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataStorageHelpers\SQLiteAsync.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataStorageHelpers\SQLiteHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DeviceHandlers\CameraCapture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ProductModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\RecipeModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\RecipeModelSQLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\DetailesRecipePage.xaml.cs">
+      <DependentUpon>DetailesRecipePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\MyRecipesPage.xaml.cs">
+      <DependentUpon>MyRecipesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\NewRecipePage.xaml.cs">
+      <DependentUpon>NewRecipePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\RecipesPage.xaml.cs">
+      <DependentUpon>RecipesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\WhatToEatPage.xaml.cs">
+      <DependentUpon>WhatToEatPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DetailsRecipePageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NewRecipePageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ProductViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\RecipesPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\RecipeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\WhatToEatPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Footer.xaml.cs">
+      <DependentUpon>Footer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Header.xaml.cs">
+      <DependentUpon>Header.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Images\cupcake240x240.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\DetailesRecipePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\MyRecipesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\NewRecipePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\RecipesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\WhatToEatPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\Footer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\Header.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>

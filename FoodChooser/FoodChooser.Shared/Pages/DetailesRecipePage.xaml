@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="FoodChooser.Pages.DetailesRecipePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FoodChooser.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="using:FoodChooser.Views"
+    xmlns:converters="using:FoodChooser.Converters"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="{Binding Recipe.Name}" FontSize="50" Margin="20" HorizontalAlignment="Center"/>
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" >
+            <Grid ManipulationMode="Scale" ManipulationDelta="ContentRoot_ManipulationStarted">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Row="0" Text="{Binding Recipe.Description}" FontSize="20" Margin="40" HorizontalAlignment="Center"/>
+                
+                <ListView Grid.Row="1" 
+                          HorizontalAlignment="Stretch"
+                          ItemsSource="{Binding Recipe.Products}"
+                          ItemTemplate="{ThemeResource DetailsProductTemplate}" >
+                    
+                </ListView>
+
+                <Image Grid.Row="2"  Width="200" Source="{Binding Recipe.Image, Converter={ThemeResource BitmapConverter} }">
+                </Image>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
