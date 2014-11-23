@@ -1,5 +1,6 @@
 ﻿using FoodChooser.Common;
 using FoodChooser.DataStorageHelpers;
+using FoodChooser.DeviceAPIs;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -117,11 +118,23 @@ namespace FoodChooser.Pages
 
         private async void OnMyRecipeButtonClick(object sender, RoutedEventArgs e)
         {
+            this.ProgressBar.IsActive = true;
+            this.ContentGrid.Visibility = Visibility.Collapsed;            
+
             var handler = new SQLiteHelper();
             await handler.Init();
             var recipes = await handler.getAllRecipes();
 
-            Frame.Navigate(typeof(MyRecipesPage),recipes);
+            if(recipes.Count() != 0)
+            {
+                Frame.Navigate(typeof(MyRecipesPage), recipes);
+            }
+            else
+            {
+                Notification.MakeNotification("No recipes");
+                this.ProgressBar.IsActive = false;
+                this.ContentGrid.Visibility = Visibility.Visible;        
+            }
         }
 
         private void OnAddNewRecipeButtonClick(object sender, RoutedEventArgs e)

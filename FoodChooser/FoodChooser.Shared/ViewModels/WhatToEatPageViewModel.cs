@@ -14,6 +14,7 @@ namespace FoodChooser.ViewModels
         private IEnumerable<ProductViewModel> products;
         private int numberOfProducts;
         private bool buttonVisability;
+        private bool progressbarVisability;
 
         public WhatToEatPageViewModel()
         {            
@@ -29,6 +30,19 @@ namespace FoodChooser.ViewModels
             {
                 this.buttonVisability = value;
                 this.RaisePropertyChanged(() => this.ButtonVisability);
+            }
+        }
+
+        public bool ProgressbarVisability
+        {
+            get
+            {
+                return this.progressbarVisability;
+            }
+            set 
+            {
+                this.progressbarVisability = value;
+                this.RaisePropertyChanged(() => this.ProgressbarVisability);
             }
         }
 
@@ -75,16 +89,18 @@ namespace FoodChooser.ViewModels
 
         public async Task<IEnumerable<RecipeViewModel>>  GetRecipesAsync()
         {
+            this.ProgressbarVisability = true;
             var inStockProducts = this.Products;
             
             var queryParse = (await new ParseQuery<RecipeModel>().Include("products").FindAsync());
             
             var result = queryParse.AsQueryable().Select(RecipeViewModel.FromModel)
                 .Where(parseRecipe => parseRecipe.Products
-                    .Any(pr => inStockProducts
+                    .All(pr => inStockProducts
                         .Any(ins => ins.Name == pr.Name)))
                         .ToList();
 
+            this.ProgressbarVisability = false;
             return result;
         }
 

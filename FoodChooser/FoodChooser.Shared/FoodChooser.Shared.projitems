@@ -24,7 +24,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)DataStorageHelpers\SQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataStorageHelpers\SQLiteAsync.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataStorageHelpers\SQLiteHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DeviceHandlers\CameraCapture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DeviceAPIs\CameraCapture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DeviceAPIs\Connection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DeviceAPIs\Notification.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ProductModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\RecipeModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\RecipeModelSQLite.cs" />

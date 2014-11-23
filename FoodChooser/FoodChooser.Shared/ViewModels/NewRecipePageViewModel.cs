@@ -8,6 +8,21 @@ namespace FoodChooser.ViewModels
     {
         private RecipeViewModel recipeViewModel;
         private int numberOfProducts;
+        private bool progressbarVisability;
+
+        public bool ProgressbarVisability
+        {
+            get
+            {
+                return this.progressbarVisability;
+            }
+            set
+            {
+                this.progressbarVisability = value;
+                this.RaisePropertyChanged(() => this.ProgressbarVisability);
+            }
+        }
+
         public RecipeViewModel Recipe
         {
             get

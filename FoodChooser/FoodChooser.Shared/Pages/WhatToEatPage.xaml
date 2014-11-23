@@ -10,51 +10,45 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <ScrollViewer>
-    <Grid x:Name="LayoutRoot">
-
-        <Grid.ChildrenTransitions>
-            <TransitionCollection>
-                <EntranceThemeTransition/>
-            </TransitionCollection>
-        </Grid.ChildrenTransitions>
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <views:Header Grid.Row="0" TitleText = "What to eat?" Margin="20"/>
-
-        <!--TODO: Content should be placed within the following grid-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+        
+        <Grid x:Name="LayoutRoot">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
-                <TextBlock Text="Number of products:" FontSize="25" VerticalAlignment="Center"/>
-                <TextBox InputScope="Number" Text="{ Binding NumberOfProducts, Mode=TwoWay}" Grid.Column="1" 
+
+            <views:Header Grid.Row="0" TitleText = "What to eat?" Margin="20"/>
+            <ProgressRing Grid.Row="1" Name="ProgressBar"  IsActive="{Binding ProgressbarVisability}"  Height="200" Width="200" />
+
+            <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+                    <TextBlock Text="Number of products:" FontSize="25" VerticalAlignment="Center"/>
+                    <TextBox InputScope="Number" Text="{ Binding NumberOfProducts, Mode=TwoWay}" Grid.Column="1" 
                          FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="20,5"/>
-            </StackPanel>
-            
-            <ListView Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                </StackPanel>
+
+                <ListView Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                      ItemsSource="{Binding Products, Mode =TwoWay}"
                      ItemTemplate = "{ThemeResource ProductTemlpate}">
-                
-            </ListView>
+
+                </ListView>
 
 
-            <Button Grid.Row="2" Grid.Column="0" Name="WhatToEatButton" 
+                <Button Grid.Row="2" Grid.Column="0" Name="WhatToEatButton" 
                     Content="What to eat?" HorizontalAlignment="Center"
                     Visibility="{Binding ButtonVisability, Mode =TwoWay, Converter={ThemeResource VisabilityConverter}}"
                     Click="WhatToEatButtonClick" FontSize="50"/>
-        </Grid>
+            </Grid>
 
-        <!--<views:Footer/>-->
-    </Grid>
+            <!--<views:Footer/>-->
+        </Grid>
     </ScrollViewer>
 </Page>

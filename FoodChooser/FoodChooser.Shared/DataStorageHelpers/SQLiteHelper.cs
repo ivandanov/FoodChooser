@@ -9,6 +9,7 @@ using Windows.Storage;
 using Newtonsoft.Json.Linq;
 using FoodChooser.Models;
 using FoodChooser.ViewModels;
+using FoodChooser.DeviceAPIs;
 
 namespace FoodChooser.DataStorageHelpers
 {
@@ -26,12 +27,20 @@ namespace FoodChooser.DataStorageHelpers
 
         }
 
-        public async Task AddRecipe(RecipeModel recipe)
+        public async Task<bool> AddRecipe(RecipeModel recipe)
         {
             var dict = new Dictionary<string, int>();
-            foreach (var item in recipe.Products)
+            try
             {
-                dict.Add(item.Name, item.Quantity);
+                foreach (var item in recipe.Products)
+                {
+                    dict.Add(item.Name, item.Quantity);
+                }
+            }
+            catch (Exception)
+            {
+                Notification.MakeNotification("You typed two or more products with same name");
+                return false;
             }
             string products = JsonConvert.SerializeObject(dict);
 
@@ -45,6 +54,8 @@ namespace FoodChooser.DataStorageHelpers
 
             SQLiteAsyncConnection conn = new SQLiteAsyncConnection(dbName);
             await conn.InsertAsync(recipeToInsert);
+            
+            return true;
         }
 
         public async Task<IEnumerable<RecipeViewModel>> getAllRecipes()
@@ -53,7 +64,7 @@ namespace FoodChooser.DataStorageHelpers
             var query = conn.Table<RecipeModelSQLite>();
             var recipes = await query.ToListAsync();
             var result = new List<RecipeViewModel>();
-            
+
             foreach (var item in recipes)
             {
                 var products = new List<ProductViewModel>();

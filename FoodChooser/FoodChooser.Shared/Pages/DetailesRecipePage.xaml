@@ -23,8 +23,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="{Binding Recipe.Name}" FontSize="50" Margin="20" HorizontalAlignment="Center"/>
-        <!--TODO: Content should be placed within the following grid-->
+        <TextBlock Text="{Binding Recipe.Name}" TextWrapping="Wrap" FontSize="50" Margin="20" HorizontalAlignment="Center"/>
+        
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" >
             <Grid ManipulationMode="Scale" ManipulationDelta="ContentRoot_ManipulationStarted">
                 <Grid.RowDefinitions>
@@ -32,15 +32,16 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
+
                 
-                <TextBlock Grid.Row="0" Text="{Binding Recipe.Description}" FontSize="20" Margin="40" HorizontalAlignment="Center"/>
-                
-                <ListView Grid.Row="1" 
+                <ListView Grid.Row="0" 
                           HorizontalAlignment="Stretch"
                           ItemsSource="{Binding Recipe.Products}"
                           ItemTemplate="{ThemeResource DetailsProductTemplate}" >
                     
                 </ListView>
+
+                <TextBlock Grid.Row="1" Height="Auto" TextWrapping="Wrap" Text="{Binding Recipe.Description}" FontSize="20" Margin="40" HorizontalAlignment="Center"/>
 
                 <Image Grid.Row="2"  Width="200" Source="{Binding Recipe.Image, Converter={ThemeResource BitmapConverter} }">
                 </Image>

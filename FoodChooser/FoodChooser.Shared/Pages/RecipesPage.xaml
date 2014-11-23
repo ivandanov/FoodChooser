@@ -25,7 +25,6 @@
 
             <views:Header Grid.Row="0" TitleText = "Recipes" />
 
-            <!--TODO: Content should be placed within the following grid-->
             <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
                 <ListView ItemsSource="{Binding Recipes}"
                       ItemTemplate="{ThemeResource RecipeTemplate}" 

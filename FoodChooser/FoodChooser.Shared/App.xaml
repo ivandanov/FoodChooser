@@ -9,7 +9,7 @@
         <converters:BoolVisabilityConverter x:Key="VisabilityConverter" />
         
         <Style x:Key="TitleTextStyle" TargetType="TextBlock" >
-            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="FontSize" Value="60"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
 
@@ -52,11 +52,13 @@
         <DataTemplate x:Key="DetailsProductTemplate" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <TextBlock Text="{Binding Name, Mode=TwoWay}"
-                       FontSize="50"
-                       HorizontalAlignment="Left"/>
+                       FontSize="30"
+                           Margin="10"
+                       HorizontalAlignment="Stretch"/>
                 <TextBlock Text="{Binding Quantity, Mode=TwoWay}"
-                       FontSize="50"
-                       HorizontalAlignment="Right"/>
+                       FontSize="30"
+                           Margin="10"
+                       HorizontalAlignment="Stretch"/>
             </StackPanel>
         </DataTemplate>
 

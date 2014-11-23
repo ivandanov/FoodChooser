@@ -22,6 +22,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Media.Capture;
 using FoodChooser.DataStorageHelpers;
+using FoodChooser.DeviceAPIs;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -109,16 +110,38 @@ namespace FoodChooser.Pages
 
         private async void OnSaveButonClick(object sender, RoutedEventArgs e)
         {
-            var viewModel = this.ViewModel;
+            if(this.ViewModel.NumberOfProducts == 0)
+            {
+                Notification.MakeNotification("You should add at least one product");
+                return;
+            }
 
-            var recipe = RecipeViewModel.FromVMToModel(viewModel.Recipe);
+            this.ToggleProgressbar();
+
+            //sqlite
+            var recipe = RecipeViewModel.FromVMToModel(this.ViewModel.Recipe);
             var sqliteHandler = new SQLiteHelper();
             await sqliteHandler.Init();
-            await sqliteHandler.AddRecipe(recipe);
+            var success = await sqliteHandler.AddRecipe(recipe);
 
-            var recipeParse = RecipeViewModel.FromVMToModel(viewModel.Recipe);
+            if(success == false)
+            {
+                this.ToggleProgressbar();
+                return;
+            }
+            //parse
+            var recipeParse = RecipeViewModel.FromVMToModel(this.ViewModel.Recipe);
             await recipeParse.SaveAsync();
-                        
+
+            Notification.MakeNotification(string.Format("New recipe add via {0}", Connection.GetConnection()));
+            //ToggleProgressbar();           
+            Frame.Navigate(typeof(MainPage));
+        }
+
+        private void ToggleProgressbar()
+        {
+            this.ViewModel.ProgressbarVisability = !this.ViewModel.ProgressbarVisability;
+            this.ContentRoot.Visibility = this.ContentRoot.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private async void OnSetPhotoButtonClick(object sender, RoutedEventArgs e)
