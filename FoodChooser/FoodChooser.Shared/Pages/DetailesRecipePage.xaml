@@ -10,7 +10,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid x:Name="LayoutRoot">
+    <Grid x:Name="LayoutRoot"  >
 
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -26,7 +26,11 @@
         <TextBlock Text="{Binding Recipe.Name}" TextWrapping="Wrap" FontSize="50" Margin="20" HorizontalAlignment="Center"/>
         
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0" >
-            <Grid ManipulationMode="Scale" ManipulationDelta="ContentRoot_ManipulationStarted">
+            <Grid ManipulationMode="All" 
+                  ManipulationDelta="Grid_ManipulationDelta" 
+                  ManipulationStarted="Grid_ManipulationStarted" 
+                  ManipulationCompleted="Grid_ManipulationCompleted">
+                
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>

@@ -119,13 +119,13 @@ namespace FoodChooser.Pages
         private async void OnMyRecipeButtonClick(object sender, RoutedEventArgs e)
         {
             this.ProgressBar.IsActive = true;
-            this.ContentGrid.Visibility = Visibility.Collapsed;            
+            this.ContentGrid.Visibility = Visibility.Collapsed;
 
             var handler = new SQLiteHelper();
             await handler.Init();
             var recipes = await handler.getAllRecipes();
 
-            if(recipes.Count() != 0)
+            if (recipes.Count() != 0)
             {
                 Frame.Navigate(typeof(MyRecipesPage), recipes);
             }
@@ -133,7 +133,7 @@ namespace FoodChooser.Pages
             {
                 Notification.MakeNotification("No recipes");
                 this.ProgressBar.IsActive = false;
-                this.ContentGrid.Visibility = Visibility.Visible;        
+                this.ContentGrid.Visibility = Visibility.Visible;
             }
         }
 
@@ -141,5 +141,9 @@ namespace FoodChooser.Pages
         {
             Frame.Navigate(typeof(NewRecipePage));
         }
+
+        
+
+
     }
 }

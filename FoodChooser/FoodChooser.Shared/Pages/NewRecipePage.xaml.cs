@@ -151,5 +151,7 @@ namespace FoodChooser.Pages
 
            this.ViewModel.Recipe.Image = photo;
         }
+
+        
     }
 }

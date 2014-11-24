@@ -95,16 +95,36 @@ namespace FoodChooser.Pages
 
         #endregion
 
-        private void ContentRoot_ManipulationStarted(object sender, ManipulationDeltaRoutedEventArgs e)
+        
+        private double x = 0;
+
+        private void Grid_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        {
+            if (x > 10.0)
+            {
+                Frame.Navigate(typeof(MainPage));
+            }
+
+            x = 0;
+        }
+
+        private void Grid_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
         {
             var grid = (sender as Grid);
             foreach (var item in grid.Children)
             {
-                if(item as TextBlock != null)
+                if (item as TextBlock != null)
                 {
                     (item as TextBlock).FontSize *= e.Delta.Scale;
                 }
             }
+
+            x += e.Delta.Translation.X;
+        }
+
+        private void Grid_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
+        {
+            
         }
     }
 }

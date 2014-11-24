@@ -98,6 +98,7 @@ namespace FoodChooser.ViewModels
                 .Where(parseRecipe => parseRecipe.Products
                     .All(pr => inStockProducts
                         .Any(ins => ins.Name == pr.Name)))
+                        .OrderByDescending(r => r.Products.Count())
                         .ToList();
 
             this.ProgressbarVisability = false;
